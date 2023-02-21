@@ -183,6 +183,15 @@ sequenceDiagram
     John-->>Alice: Great!
 </div>
 
+too sad. :fire: Itseems that mermaid can not used in code blocks. could only add them by insert html labels.
+
+```mermaid
+graph
+ NODE_A[A]
+ NODE_B[B]
+ NODE_A-->NODE_B
+```
+
 ### sequence
 
 ```sequence

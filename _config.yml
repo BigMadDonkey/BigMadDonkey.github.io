@@ -5,9 +5,9 @@ baseurl:
 url: https://bigmaddonkey.github.io/Blog
 date_format: "ordinal"
 title: Donkey
-# subtitle: ""
+subtitle: "以有涯随无涯"
 description: "个人博客"
-keywords: 码志, Blog, Donkey
+keywords: Blog, Donkey
 timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
