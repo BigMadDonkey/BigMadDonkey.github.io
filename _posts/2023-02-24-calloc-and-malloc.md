@@ -11,10 +11,12 @@ keywords: C, memory, system
 
 ## 引言
 在C库中，用来开辟动态内存空间主要通过`malloc`和`calloc`两个函数完成。
-```C
+
+```c
 void * buf1 = malloc(size)
 void * buf2 = calloc(count, size)
 ```
+
 从用法和结果上看，他们的区别一个在于参数：`malloc`接收总尺寸，而`calloc`接收内存块的个数和他们的大小，开辟的空间等于二者相乘；另一点在于从`calloc`申请而来的空间总是初始化为0.
 
 但是事实确实如此吗？`calloc`确实只是参数改了一下，并且在`malloc`的基础上`memset`为0吗？
@@ -28,7 +30,7 @@ void * buf2 = calloc(count, size)
 ## 区别2: 分配内存时置0操作的代价
 
 本地执行下述代码(gcc, 无额外参数)
-```C
+```c
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -65,6 +67,7 @@ int main(int argc, char** argv)
     printf("malloc+memset+free 1 GiB: %0.2f ms\n", (stop - start) / LOOPS * 1000);
 }
 ```
+
 观察控制台输出结果：
 ![两种方式分配内存的时间代价](/images/blog/MallocAndCalloc/MallocAndCalloc-diff2_result.png)
 
