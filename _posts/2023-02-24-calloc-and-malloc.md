@@ -1,7 +1,7 @@
 ---
 layout: post
 title: malloc和calloc的区别
-categories: Blog
+categories: [Blog, C]
 description: malloc和calloc究竟有什么区别？
 keywords: C, memory, system
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Unity中对渲染性能的几种常见的优化手段
-categories: Blog
+categories: [Blog, Unity, Render-Pipeline]
 description: 本文介绍几种Unity项目常见的性能优化手段。它们往往适用于不同的Pipeline。
 keywords: Unity, peformance, pipeline
 ---
@@ -18,7 +18,7 @@ keywords: Unity, peformance, pipeline
 
 pipeline的整个流程可以细分为如下图所示的几个阶段(图源自defold官网的教程配图)：
 
-![渲染管线](/images/blog/UnityRenderPerformance/UnityRenderPerformance-Pipeline.png)
+![渲染管线](/images/blog/UnityRenderPerformance/UnityRenderPerformance-pipeline.png)
 
 1. 确立模型各面的顶点信息，包括坐标、法线、纹理坐标等
 2. 经过顶点着色器处理，对三角面的三个顶点的坐标进行必要的变换，以及处理光照
