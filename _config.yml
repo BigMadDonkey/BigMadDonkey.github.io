@@ -1,7 +1,7 @@
 # ---------------- #
 #   Main Configs   #
 # ---------------- #
-baseurl:
+baseurl: https://bigmaddonkey.github.io/Blog
 url: https://bigmaddonkey.github.io/Blog
 date_format: "ordinal"
 title: Donkey
