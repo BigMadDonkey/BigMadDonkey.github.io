@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 ```
 
 观察控制台输出结果：
-![两种方式分配内存的时间代价](/images/blog/MallocAndCalloc/MallocAndCalloc-diff2_result.png)
+![两种方式分配内存的时间代价](https://bigmaddonkey.github.io/Blog/images/blog/MallocAndCalloc/MallocAndCalloc-diff2_result.png)
 
 不难发现调用他们的时间成本差别很明显。
 
