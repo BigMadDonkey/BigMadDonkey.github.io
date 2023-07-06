@@ -73,11 +73,11 @@ $$
 
 让我们再看一次Phong模型的图解：
 
-![Blinn-Phong-Model](../images/blog/PhongLightingReflectionModel/PhongLightingReflectionModel-Blinn_Phong_Model.svg)
+![Blinn-Phong-Model](/images/blog/PhongLightingReflectionModel/PhongLightingReflectionModel-Blinn_Phong_Model.svg)
 
 其中$H$就是$L + V$得到的方向上的向量，由于实际上就是$L$和$V$夹角角平分线上的向量，也称作半程向量(Halfway)。$N$与$H$的夹角就是$R$与$V$夹角的一半。
 
-实际使用中，我们用$\frac{L + V}{||L + V||}$来计算$\hat H$，用$\hat H \cdot \hat N$代替原本的$\hat R \cdot \hat V$。不过单纯替换这一部分，结果会与原来不同，因为夹角只是原来的一半，要达到跟Phong模型类似的效果，必须从其他方面确保高光区域大小基本不变。对于相同的夹角，通过半程向量得到的余弦值现在会比原来偏大，因此需要设法让结果偏小。Blinn模型的做法是调整材质的系数，例如令$\alpha{'} = 4\alpha$，来大致接近Phong模型的效果。
+实际使用中，我们用 $\frac{L + V}{\|\|L + V\|\|}$ 来计算$\hat H$，用$\hat H \cdot \hat N$代替原本的$\hat R \cdot \hat V$。不过单纯替换这一部分，结果会与原来不同，因为夹角只是原来的一半，要达到跟Phong模型类似的效果，必须从其他方面确保高光区域大小基本不变。对于相同的夹角，通过半程向量得到的余弦值现在会比原来偏大，因此需要设法让结果偏小。Blinn模型的做法是调整材质的系数，例如令$\alpha{'} = 4\alpha$，来大致接近Phong模型的效果。
 
 > 根据维基百科的说法，虽然Blinn-Phong模型是为了减少计算量的同时接近Phong模型的结果，但实际上Blinn-Phong模型在很多情况下比Phong模型得到的结果更符合经验。
 

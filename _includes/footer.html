@@ -70,7 +70,22 @@
     {% endif %}
 
     {% if page.mathjax %}
+    <!-- 第二个标签是config！ -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mathjax/MathJax@2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          TeX: {
+              equationNumbers: {
+                  autoNumber: "AMS"
+              }
+          },
+          tex2jax: {
+              inlineMath: [ ['$','$'] ],
+              processEscapes: true,
+          }
+      });
+      </script>
+    
     {% endif %}
 
     {% if page.mindmap %}

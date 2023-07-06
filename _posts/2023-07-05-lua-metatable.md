@@ -62,7 +62,7 @@ Manual中这样描述`__index`:
 
 通过`setmetatable`修改一个table的metatable时，如果其原来的metatable有`__metatable`字段，则会报错。`__metatable`不仅决定了通过`getmetatable`可以获取的返回值，还使得不能通过`setmetatable`更改元表！
 
-```Lua
+```lua
 local super = {__metatable = true}
 local derive = setmetatable({}, super)
 -- 以下代码会报错：
@@ -72,8 +72,8 @@ setmetatable(derive, {})
 
 所以`__metatable`的设置还起到了禁止更改metatable的作用。这保护了table的状态，确保table的元表不会被外部更改。
 
-```C
-\\lbaselib.c -- from lua/lua github repository
+```c
+//lbaselib.c -- from lua/lua github repository
 static int luaB_setmetatable (lua_State *L) {
   int t = lua_type(L, 2);
   luaL_checktype(L, 1, LUA_TTABLE);
@@ -85,4 +85,11 @@ static int luaB_setmetatable (lua_State *L) {
   return 1;
 }
 ```
-可以在Github上的Lua仓库中找到setmetatable相关的代码。`LUA_TNIL`是常数0，代表着Lua虚拟机中的nil。<aside>强力推荐 sourcegraph chrome扩展，在线看github开源仓库巨方便！最近还继承了cody AI助手，可以直接让他看仓库中的某些文件，响应很快，比chat gpt专业一些。虽然也有胡编的毛病，但总体还是很方便的！</aside>
+可以在Github上的Lua仓库中找到setmetatable相关的代码。`LUA_TNIL`是常数0，代表着Lua虚拟机中的nil。
+<div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#FeAAAA">
+<br />
+💡强力推荐 sourcegraph chrome扩展，在线看github开源仓库巨方便！最近还继承了cody AI助手，可以直接让他看仓库中的某些文件，响应很快，比chat gpt专业一些。虽然也有胡编的毛病，但总体还是很方便的！
+
+<br />
+</div>
+
