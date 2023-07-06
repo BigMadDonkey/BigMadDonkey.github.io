@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Lua中metatable相关的小记
-categories: [Blog, Lua]
+categories: [Lua]
 description: Lua的metatable相关的注意点。以后也许还会更新也说不定。
 keywords: Lua, metatable
 mathjax: true

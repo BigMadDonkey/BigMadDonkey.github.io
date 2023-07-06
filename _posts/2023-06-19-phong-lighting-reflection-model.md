@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Phong光照模型
-categories: [Blog, CG]
+categories: [CG]
 description: 本篇是对Unity Shader的学习博客。
 keywords: Phong Reflection Model, Lambertian Reflection
 mathjax: true
