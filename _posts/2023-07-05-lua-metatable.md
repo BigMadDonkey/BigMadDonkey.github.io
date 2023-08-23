@@ -13,7 +13,6 @@ mathjax: true
 
 本篇是对Lua 元表机制的学习记录。以后如果再发现新的注意点可能还会更新。主要参考了[Lua 5.4 Reference Manual](http://www.lua.org/manual/5.4/manual.html)，并在其提供的在线Demo界面在线运行Lua代码来验证。
 
-
 ## metatable简介
 
 Lua作为一个脚本语言，与JavaScript存在许多共同点，无论是弱类型、解释执行，还是语法层面，它们都很相似。在OOP方面的设计思想也十分类似：它们都不直接提供对类的支持，大部分事物都是对象，在JavaScript中，想要达到继承的效果需要依赖prototype链，在Lua中则是依赖于元表。不过，JavaScript也提供了语法层面的对类的支持（虽然其实还是prototype的语法糖），这可比只能支持基于对象的继承的Lua要好多了。如果使用Lua，就不得不自己实现一套类的继承机制...
@@ -28,21 +27,19 @@ Lua作为一个脚本语言，与JavaScript存在许多共同点，无论是弱�
 
 Manual中这样描述`__index`:
 > __index: The indexing access operation table[key]. This event happens when table is not a table or when key is not present in table. The metavalue is looked up in the metatable of table.
-> 
-> The metavalue for this event can be either a function, a table, or any value with an __index metavalue. If it is a function, it is called with table and key as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, the final result is the result of indexing this metavalue with key. This indexing is regular, not raw, and therefore can trigger another __index metavalue.
+>
+> The metavalue for this event can be either a function, a table, or any value with an __index metavalue. If it is a function, it is called with table and key as arguments, and the result of the call (adjusted to one value) is the result of the operation. Otherwise, the final result is the result of indexing this metavalue with key. This indexing is regular, not raw, and therefore can trigger another__index metavalue.
 
 两个要点：
+
 1. 只有当被查找的元素不是table，或是table中不存在要查找的key时，才会使用`__index`来根据元表向上查找。
 2. `__index`的可取值可以是函数，或是另一个table，或是其他带有`__index`的值。所谓的metavalue是指`__index`这样的，元表特有的一系列特定成员。如果`__index`是函数，则会将table和key作为输入，执行函数，返回值作为`__index`的访问结果（相当于getter?）；否则相当于在`__index`上访问key成员。
-
 
 关于第一条，难道不是table也可以有metatable吗？答案是肯定的：你可以随便创建一个string，在其上调用`getmetatable`就知道了。不过，虽然其他类型有的也会有自己的metatable，但如果是想要自行通过`setmetatable`来给非table类型添加metatable，则会报错。只有使用debug library才可以为非table类型修改他们的metatable。
 
 关于第二条，这决定了通过元表也可以继承式地向上不断访问。`__index`的值完全可以是一个表，一个getter，或是另一个带有`__index`的表。
 
 而对于`__newindex`也是类似的，两个要点对它也适用，区别在于`__newindex`作用于setter的场合。
-
-
 
 如果不管metatable，就是想明确地访问table本身的内容，可以使用`rawget`和`rawset`函数。
 
@@ -57,7 +54,7 @@ Manual中这样描述`__index`:
 我们不妨看看`setmetatable`的doc：
 
 > setmetatable (table, metatable)
-> 
+>
 > Sets the metatable for the given table. If metatable is nil, removes the metatable of the given table. If the original metatable has a __metatable field, raises an error.
 
 通过`setmetatable`修改一个table的metatable时，如果其原来的metatable有`__metatable`字段，则会报错。`__metatable`不仅决定了通过`getmetatable`可以获取的返回值，还使得不能通过`setmetatable`更改元表！
@@ -85,11 +82,12 @@ static int luaB_setmetatable (lua_State *L) {
   return 1;
 }
 ```
+
 可以在Github上的Lua仓库中找到setmetatable相关的代码。`LUA_TNIL`是常数0，代表着Lua虚拟机中的nil。
 <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#FeAAAA">
 <br />
-💡强力推荐 sourcegraph chrome扩展，在线看github开源仓库巨方便！最近还继承了cody AI助手，可以直接让他看仓库中的某些文件，响应很快，比chat gpt专业一些。虽然也有胡编的毛病，但总体还是很方便的！
+💡强力推荐 sourcegraph chrome扩展，在线看github开源仓库巨方便！最近还集成了cody AI助手，可以直接让他看仓库中的某些文件，响应很快，比chat gpt专业一些。虽然也有胡编的毛病，但总体来说
+还是很方便的！
 
 <br />
 </div>
-
