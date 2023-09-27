@@ -10,6 +10,7 @@ keywords: C, memory, system
 本文来自于对[一篇博客](https://vorpus.org/blog/why-does-calloc-exist/)的学习。
 
 ## 引言
+
 在C库中，用来开辟动态内存空间主要通过`malloc`和`calloc`两个函数完成。
 
 ```c
@@ -30,6 +31,7 @@ void * buf2 = calloc(count, size)
 ## 区别2: 分配内存时置0操作的代价
 
 本地执行下述代码(gcc, 无额外参数)
+
 ```c
 #include <stdlib.h>
 #include <stdio.h>
@@ -75,7 +77,6 @@ int main(int argc, char** argv)
 不难发现调用他们的时间成本差别很明显。
 
 造成这种现象的原因，其一在于`memset`的调用是否为必要。当一次申请的内存空间足够大，进程将不得不向OS请求更多的内存资源。当内存资源是由操作系统提供而来时，OS会在将内存分配给进程之前进行内存的置0操作，防止读取到内存上之前保留的数据。显式使用`malloc` + `memset`会不分场合地多置0，而`calloc`由于与内存分配单元结合更好，对内存的来源是有感知的，因此可以避免的多余的内存置0操作。
-
 
 但是这仍不足以解释为什么`calloc`需要的时间如此之短。如果`calloc`只是全置一遍0而`malloc`会多执行一次，他们的时间应该在两倍左右，但事实上calloc的消耗要小的多。
 

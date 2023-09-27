@@ -16,9 +16,7 @@ mathjax: true
 ## metatable简介
 
 Lua作为一个脚本语言，与JavaScript存在许多共同点，无论是弱类型、解释执行，还是语法层面，它们都很相似。在OOP方面的设计思想也十分类似：它们都不直接提供对类的支持，大部分事物都是对象，在JavaScript中，想要达到继承的效果需要依赖prototype链，在Lua中则是依赖于元表。不过，JavaScript也提供了语法层面的对类的支持（虽然其实还是prototype的语法糖），这可比只能支持基于对象的继承的Lua要好多了。如果使用Lua，就不得不自己实现一套类的继承机制...
-<br />
-<br />
-<br />
+
 跑题了。关于metatable和prototype的另一个不同点在于对访问父层次成员能力的要求。在JS中，只要对象之间建立起prototype的关系，不需要任何其他操作，当尝试在对象上访问其不存在的成员时，会沿着原型链自动往上查找；而在Lua中，则要求metatable必须带有`__index`或`__newindex`成员。它们分别就决定了读取/写入字段时，如果table上不存在该字段，将如何从metatable上来访问。
 
 在Lua中，通过`setmetatable`和`getmetatable`来访问table的元表。
