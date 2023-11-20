@@ -738,3 +738,9 @@ div.footnotes::before {
 img + em {
   color: grey;
 }
+
+/* Below are customized css styles. */
+.markdown-body code.highlighter-rouge {
+    color: #f32346;
+    background-color: #eeeeee;
+}
