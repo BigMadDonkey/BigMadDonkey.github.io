@@ -4,6 +4,7 @@ title: 为VSCode配置自定义的语法token配色
 categories: [VSCode]
 description: 为VSCode配置自定义的语法token配色
 keywords: VSCode
+mathjax: true
 ---
 
 {:toc}

@@ -1,3 +1,7 @@
-{% if site.share_component.enabled %}
-<div class="share-component"></div>
+{% if site.components.share.enabled %}
+<div class="share-component" data-disabled="douban,qzone,diandian,linkedin,google,tencent">
+    <div class="social-share"></div>
+    <!--  引入js -->
+    <!-- <script src="dist/js/Share.js"></script> -->
+</div>
 {% endif %}

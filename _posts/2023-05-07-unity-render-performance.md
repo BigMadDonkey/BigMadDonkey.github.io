@@ -4,6 +4,7 @@ title: Unity中对渲染性能的几种常见的优化手段
 categories: [Unity]
 description: 本文介绍几种Unity项目常见的性能优化手段。它们往往适用于不同的Pipeline。
 keywords: Unity, peformance, pipeline
+mathjax: true
 ---
 
 {:toc}

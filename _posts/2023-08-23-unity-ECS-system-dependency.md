@@ -4,6 +4,7 @@ title: Unity ECS中解决System间Job依赖的方式
 categories: [ECS]
 description: ECS规范中要求System必须按照指定方式组织内部Job的依赖，本篇解释这样做的理由，并介绍System间确立依赖的机制
 keywords: Unity, ECS
+mathjax: true
 ---
 
 {:toc}
