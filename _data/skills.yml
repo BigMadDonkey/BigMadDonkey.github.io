@@ -1,19 +1,21 @@
 - name: Software Engineer Keywords
   keywords:
-      - Java
-      - C++
+      - C#
+      - Dart
+      - Lua
       - Python
-      - Design Patterns
+      - GLSL
+
+- name: Game Engine Keywords
+  keywords:
+      - Unity
+      - Godot
 
 - name: Mobile Developer Keywords
   keywords:
       - Android
-      - Reverse Engineering
+      - Flutter
 
-- name: Windows Developer Keywords
+- name: Frontend Developer Keywords
   keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
+      -- React

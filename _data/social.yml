@@ -1,6 +1,10 @@
 - sitename: GitHub
-  name: bigmaddonkey
+  name: "@bigmaddonkey"
   url: https://github.com/bigmaddonkey
+
+- sitename: Email
+  name: bigmaddonkey@outlook.com
+  url: mailto:bigmaddonkey@outlook.com
 
 # - sitename: 掘金
 #   name: mzlogin
